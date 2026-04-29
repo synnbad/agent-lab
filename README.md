@@ -160,6 +160,12 @@ OpenClaw may be used as a personal-only local agent runtime for `agent-lab` and 
 
 See `integrations/openclaw-personal-only-policy.md` for the detailed personal-only policy.
 
+## Workflow Creation Mode
+
+When no existing workflow fits a personal project idea, OpenClaw should not execute immediately. It should activate Workflow Creation Mode, map the closest agents and workflows, run Grill-Me Sinbad, draft a new workflow, and ask for approval before saving anything.
+
+New workflows start as Draft and become Active only after testing and review.
+
 ## Recommended Update Process
 
 1. Draft the change in a branch.
