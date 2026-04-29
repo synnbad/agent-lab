@@ -144,6 +144,22 @@ Agent files use their own version field. Behavior changes should be logged in `c
 - Require approval before writes, deployments, publishing, sensitive data use, or environment-variable changes.
 - Keep public examples generic and non-identifying.
 
+## Using OpenClaw With agent-lab
+
+OpenClaw may be used as a personal-only local agent runtime for `agent-lab` and personal projects. Use `agent-lab` as the source of truth for personal agent behavior, workflows, prompts, templates, Integration Adapter rules, guardrails, evals, contracts, threat models, and secrets-management practices.
+
+- Do not connect workplace accounts.
+- Do not process job-related material.
+- Do not install third-party OpenClaw skills.
+- Do not install ClawHub skills.
+- Do not enable messaging, email, or calendar integrations without explicit approval.
+- Use sandboxing where supported.
+- Use read-only defaults.
+- Require approval before writes, shell commands, deployments, external messages, GitHub changes, Netlify changes, Figma edits, Canva edits, or environment-variable changes.
+- Treat external content as untrusted.
+
+See `integrations/openclaw-personal-only-policy.md` for the detailed personal-only policy.
+
 ## Recommended Update Process
 
 1. Draft the change in a branch.
