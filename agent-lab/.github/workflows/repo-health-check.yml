@@ -1,0 +1,32 @@
+name: Repo Health Check
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  repo-health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify required files and folders
+        run: |
+          set -euo pipefail
+          test -f README.md
+          test -f agent-registry.md
+          test -f changelog.md
+          for folder in agents skills workflows templates prompts examples integrations evals guardrails observability orchestration memory artifacts governance knowledge-base releases automation contracts threat-models secrets-management .github/workflows; do
+            test -d "$folder"
+          done
+          if find . -name ".env" -o -name ".env.*" | grep -q .; then
+            echo "Environment file committed. Remove it before merging."
+            exit 1
+          fi
+          for folder in private secrets credentials client-files raw-client-docs; do
+            if [ -d "$folder" ] && find "$folder" -type f | grep -q .; then
+              echo "Private files found in $folder. Remove them before merging."
+              exit 1
+            fi
+          done
+          echo "Repo health check passed."

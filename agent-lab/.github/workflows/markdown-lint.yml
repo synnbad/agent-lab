@@ -1,0 +1,18 @@
+name: Markdown Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Placeholder Markdown lint
+        run: |
+          echo "Markdown lint placeholder. Add a real markdown linter later if needed."
+          find . -name "*.md" -type f | wc -l
